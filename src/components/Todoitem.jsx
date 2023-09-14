@@ -1,20 +1,27 @@
 import './Todoitem.css'
-import { FaRegTrashCan } from 'react-icons/fa6';
+import { BsTrashFill } from 'react-icons/bs';
+import { AiFillEdit } from 'react-icons/ai';
 
 function Todoitem (props) {
     let { id, completed, label } = props
     return (
         <li className='todo-item'>
-            <label>{ label }</label>
-            <input 
-                checked={ completed }
-                onChange={ () => { 
-                    props.toggleTaskCompleted(id)
-                }}
-                type="checkbox"
-            />
-            <button onClick={() => {props.deleteTodo(id)}}><FaRegTrashCan/></button>
+            <div>
+            <input className='checkbox'
+                    checked={ completed }
+                    onChange={ () => { 
+                        props.toggleTaskCompleted(id)
+                    }}
+                    type="checkbox"
+                />
+                <label className='text'>{ label }</label>
+            </div>
+            <div>
+                <button className='edit' onClick={() => {props.editTodo(id)}}><AiFillEdit/></button> 
+                <button onClick={() => {props.deleteTodo(id)}}><BsTrashFill/></button>                 
+            </div>
         </li>
     )
 }
+
 export default Todoitem

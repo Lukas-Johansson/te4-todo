@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
+import './Todoitem.css'
 import Todoitem from './Todoitem'
-
 
 function Todolist() {
 
@@ -51,19 +51,30 @@ function Todolist() {
         setTodos(newTodos)
     }
 
+    const editTodo = (id) =>{
+        const newTodos = todos.map(todo => {
+            console.log("Edit")
+            let editText
+            if(todo.id === id){
+                editText = prompt("New text", "Default")
+            }
+            return todo.id === id ? { ...todo, label: editText} : todo
+        })
+        setTodos(newTodos)
+    }
+
     return (
         <>
         <input id="newTodo" type="text" placeholder='skriv in en sak här'/>
-        <button onClick={() => {addTodo() }}>lägg till</button>
+        <button className='todobutton' onClick={() => {addTodo() }}>lägg till</button>
 
-        <button onClick={() => {deleteAll() }}>Ta bort allt</button>
+        <button className='todobutton' onClick={() => {deleteAll() }}>Ta bort allt</button>
 
-        <button onClick={() => {checkall() }}>Checka alla</button>
+        <button className='todobutton' onClick={() => {checkall() }}>Checka alla</button>
 
-        <button onClick={() => {uncheckall() }}>Unchecka alla</button>
+        <button className='todobutton' onClick={() => {uncheckall() }}>Unchecka alla</button>
 
-        <button onClick={() => {deleteSelected () }}>Deleta checkade</button>
-
+        <button className='todobutton' onClick={() => {deleteSelected () }}>Deleta checkade</button>
 
         <ul className='todo-list'>
             {todos.map((todo, index) =>
@@ -74,6 +85,7 @@ function Todolist() {
                     completed={todo.completed}
                     toggleTaskCompleted={toggleTaskCompleted}
                     deleteTodo={deleteTodo}
+                    editTodo={editTodo}
                 />
             )}
         </ul>
