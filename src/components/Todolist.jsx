@@ -65,6 +65,7 @@ function Todolist() {
 
     return (
         <>
+        <div className='buttons'>
         <input id="newTodo" type="text" placeholder='skriv in en sak här'/>
         <button className='todobutton' onClick={() => {addTodo() }}>lägg till</button>
 
@@ -75,6 +76,7 @@ function Todolist() {
         <button className='todobutton' onClick={() => {uncheckall() }}>Unchecka alla</button>
 
         <button className='todobutton' onClick={() => {deleteSelected () }}>Deleta checkade</button>
+        </div>
 
         <ul className='todo-list'>
             {todos.map((todo, index) =>

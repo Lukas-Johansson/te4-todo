@@ -41,3 +41,25 @@
 .edit {
     margin-right: 0.5rem;
 }
+
+.buttons {
+    display: flex;
+}
+
+@media screen and (max-width:600px) {
+    .todo-item {
+        font-size: 1rem;
+    }
+
+    .buttons {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .todobutton {
+        margin: 10px;
+        padding: 1rem 1rem;
+    }
+
+}
